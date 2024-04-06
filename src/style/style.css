@@ -118,12 +118,13 @@ body {
   color: #fff;
   font-size: 1.5em;
   font-family: 'Lalezar';
+  margin: 0 20px;
 }
 .ad-home{
   font-size: 2em;
   color: #fff;
   font-family: 'Lalezar';
-  margin: 10px;
+  margin: 10px 20px 0 0;
 }
 
 .content-home{
@@ -210,10 +211,6 @@ body {
 
 /* ....................................................................SINGLEPOST  */
 
-.h1{
-  position: relative;
-  top: 100px;
-}
 
 
 
@@ -224,11 +221,118 @@ body {
 
 /* .....................................................................responsive....... */
 
+@media screen and (max-width: 1000px) {
+  .imgpack-home{
+    width: 380px;
+  }
+  .grid-home{
+    width: 80%;
+  }
+  .morebtn-home{
+    height: 35px;
+    width: 500px ;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .imgpack-home{
+    width: 320px;
+  }
+  .img-home{
+    width: 320px;
+  }
+  .Arm-home{
+    font-size: 1.6em;
+  }
+  .ad-home{
+    font-size: 1.5em ;
+  }
+  .grid-home{
+    width: 70%;
+    grid-template-columns: repeat(2,1fr);
+  }
+  .morebtn-home{
+    height: 40px;
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  body{
+    font-size: 18px;
+  }
+  .imgpack-home{
+    width: 280px;
+    height: auto;
+  }
+  .img-home{
+    height: auto;
+    width: 280px;
+  }
+  .adbtn-home{
+    margin: 0 10px 0 0;
+  }
+  .ad-home{
+    margin: 10px 20px 0 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .container-nav{
+    height: 60px;
+  }
+  .container-home{
+    top: 60px;
+  }
+  .main-home{
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .imgpack-home{
+    order: 1;
+  }
+  .mainadpage-home{
+    order: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .adbtn-home{
+    margin: 0;
+  }
+  .ad-home{
+    margin: 10px 0;
+  }
+  .grid-home{
+    width: 60%;
+    grid-template-columns: repeat(1,1fr);
+  }
+  .search-home{
+    width: 380px;
+  }
+  .morebtn-home{
+    height: 40px;
+    width: 380px ;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .flex-nav {
     justify-content: center;
   }
   .arm-nav {
     display: none;
+  }
+  .grid-home{
+    width: 70%;
+    grid-template-columns: repeat(1,1fr);
+  }
+  .search-home{
+    width: 300px;
+  }
+  .morebtn-home{
+    height: 40px;
+    width: 300px ;
   }
 }
