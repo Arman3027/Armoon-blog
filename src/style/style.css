@@ -33,16 +33,16 @@ body {
 }
 .beforlogin-nav {
   height: 100%;
-  width: 150px;
-  display: flex;
+  width: 170px;
+  display: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 .afterlogin-nav {
   height: 100%;
-  width: 300px;
-  display: none;
+  width: 320px;
+  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -222,6 +222,27 @@ body {
 /* .....................................................................responsive....... */
 
 @media screen and (max-width: 1000px) {
+  .item-nav{
+    display: block;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+  }
+  .link-nav{
+    display: block;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .afterlogin-nav{
+    width: 340px;
+    font-size: 0.9em;
+  }
   .imgpack-home{
     width: 380px;
   }
@@ -280,6 +301,9 @@ body {
 @media screen and (max-width: 500px) {
   .container-nav{
     height: 60px;
+  }
+  .flex-nav{
+    padding: 0 5px;
   }
   .container-home{
     top: 60px;

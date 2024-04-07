@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 
 const Home = () => {
   let refmorebtn = useRef(null);
+  let refsearch = useRef(null);
   const context = useContext(Context);
 
   return (
@@ -28,18 +29,20 @@ const Home = () => {
               placeholder="جستوجو"
               className="search-home"
               onChange={(e) => {
-                handlechange(e.target.value);
+                handlechange(e.target.value ,refmorebtn.current);
               }}
+              ref={refsearch}
+              value={context.search}
             />
             <div className="grid-home">
               {context.filterposts
                 .slice(0, context.more)
-                .map((element, index) => {
+                .map((element) => {
                   return (
                     <Link to={`/${element.id}`} className="itemlink-home">
                       <div className="item-home">
                         <img
-                          src={context.photos[index].thumbnailUrl}
+                          src={context.photos[element.id - 1].thumbnailUrl}
                           className="itemimg-home"
                         />
                         <p className="itemtitle-home">{element.title}</p>
@@ -60,6 +63,7 @@ const Home = () => {
                 handlemore(refmorebtn.current);
               }}
               ref={refmorebtn}
+              style={{ display: context.isactive ? ('none') : ('block')}}
             >
               بیشتر
             </button>
@@ -71,12 +75,12 @@ const Home = () => {
 
   //  ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,functions
 
-  function handlemore(refmorebtn) {
-    context.onmore(refmorebtn);
+  function handlemore(refmorebtn ) {
+    context.onmore(refmorebtn );
   }
 
-  function handlechange(value) {
-    context.onchange(value);
+  function handlechange(value , refmorebtn) {
+    context.onchange(value , refmorebtn);
   }
 };
 
