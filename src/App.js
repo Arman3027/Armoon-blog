@@ -6,6 +6,8 @@ import { Context } from "./context/context";
 import Home from "./components/home";
 import Navbar from "./components/navbar";
 import Singlepost from "./components/singlepost";
+import Register from "./components/register";
+import Login from "./components/login";
 
 const App = () => {
   const [posts, setposts] = useState([]);
@@ -42,7 +44,7 @@ const App = () => {
       <Context.Provider
         value={{
           search: search,
-          isactive : isactive,
+          isactive: isactive,
           setmore: setmore,
           more: more,
           posts: posts,
@@ -56,6 +58,8 @@ const App = () => {
         <Navbar />
         <Routes>
           <Route path="/home" element={<Navigate to="/" replace />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Singlepost />} />
           <Route path="*" element={<Navigate to="/not-found" replace />} />

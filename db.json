@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "morpheus",
+      "email": "solaa8239@gmail.com",
+      "password": "zion resident"
+    },
+    {
+      "id": "0fb4",
+      "email": "solaa8239@gmail.com",
+      "password": "zion resident",
+      "firstname": "Arian"
+    },
+    {
+      "id": "6208",
+      "email": "solaa8239@gmail.com",
+      "password": "zion resident"
+    },
+    {
+      "id": "2afc",
+      "email": "solaa8239@gmail.com",
+      "password": "zion resident"
+    },
+    {
+      "id": "b1e7",
+      "email": "solaa8239@gmail.com",
+      "password": "zion resident"
+    },
+    {
+      "id": "635f",
+      "email": "olivier@mail.com",
+      "password": "bestPassw0rd"
+    }
+  ]
+}
