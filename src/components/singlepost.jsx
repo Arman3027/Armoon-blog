@@ -1,13 +1,18 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState , useRef ,useContext, createElement} from "react";
+import { useParams , useNavigate} from "react-router-dom";
+import { Context } from "../context/context";
 
 const Singlepost = () => {
+  const context = useContext(Context)
+  const textarearef = useRef()
+  const navigate = useNavigate()
   const { id } = useParams();
   const [singlepost, setsinglepost] = useState([]);
   const [singleimg, setsingleimg] = useState([]);
   const [singleuser, setsingleuser] = useState([]);
   const [comments, setcomments] = useState([]);
+  const [mycomments, setmycomments] = useState([])
 
   useEffect(() => {
     async function getitem() {
@@ -30,6 +35,13 @@ const Singlepost = () => {
         return item.postId === postresponse.data.id;
       });
       setcomments(filtered);
+        let responsemycomment = await axios.get("http://localhost:8000/comments");
+      let filterrespones = responsemycomment.data.filter((item) => {
+        return item.postId === postresponse.data.id;
+      });
+      setmycomments(filterrespones);
+        
+      
     }
     getitem();
   }, []);
@@ -58,15 +70,58 @@ const Singlepost = () => {
               </>
             );
           })}
+          {mycomments.map((element) => {
+            return (
+              <>
+                <div className="singlecomment-single">
+                  <div className="commentname-single">{element.name}</div>
+                  <div className="commentemail-single">{element.email}</div>
+                  <div className="commentbody-single">{element.body}</div>
+                </div>
+              </>
+            );
+          })}
         </div>
         <div className="sendcomment-single">
-          <textarea className="textarea-single" placeholder="نظر خود را وارد کنید"></textarea>
-          <button className="submitbtn-single">ثبت نام (ارسال نظر)</button>
-          <button className="sendbtn-single">ارسال نظر</button>
+          <textarea
+            ref={textarearef}
+            className="textarea-single"
+            placeholder="نظر خود را وارد کنید"
+          ></textarea>
+          <button
+            onClick={() => {
+              handlesend(textarearef.current.value);
+            }}
+            className="submitbtn-single"
+          >
+            {context.status ? "ارسال نظر" : "ارسال نظر (ثبت نام)"}
+          </button>
         </div>
       </div>
     </>
   );
+
+  async function handlesend(value) {
+    if (context.status === false) {
+      navigate('/register')
+      return
+    } else if (value === "" || value=== null) {
+      alert('لطفا نظر خود را وارد کنید')
+    } else {
+      value = value.replace(/(\r\n|\n|\r)/gm, "");
+      let newcomment = {
+        "postId": singlepost.id,
+        "name": context.usernameprofile,
+        "email": context.emailprofile,
+        "body": value
+      }
+      await axios.post("http://localhost:8000/comments", newcomment);
+      let response = await axios.get("http://localhost:8000/comments")
+      let filterrespones = response.data.filter((item) => {return item.postId === singlepost.id})
+      setmycomments(filterrespones)
+      textarearef.current.value = ""
+    }
+  }
 };
 
 export default Singlepost;

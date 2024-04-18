@@ -14,7 +14,9 @@ const Home = () => {
         <div className="flex-home">
           <div className="main-home">
             <div className="mainadpage-home">
-              <button className="adbtn-home">ثبت نام کن</button>
+              <Link to={context.status ? '/makeblog' : '/register'}>
+                <button className="adbtn-home">{context.status? 'ایجاد بلاگ' : 'ثبت نام کن'}</button>
+              </Link>
               <p className="ad-home"> وبلاگ خودتو بنویس</p>
             </div>
             <div className="imgpack-home">
@@ -29,33 +31,31 @@ const Home = () => {
               placeholder="جستوجو"
               className="search-home"
               onChange={(e) => {
-                handlechange(e.target.value ,refmorebtn.current);
+                handlechange(e.target.value, refmorebtn.current);
               }}
               ref={refsearch}
               value={context.search}
             />
             <div className="grid-home">
-              {context.filterposts
-                .slice(0, context.more)
-                .map((element) => {
-                  return (
-                    <Link to={`/${element.id}`} className="itemlink-home">
-                      <div className="item-home">
-                        <img
-                          src={context.photos[element.id - 1].thumbnailUrl}
-                          className="itemimg-home"
-                        />
-                        <p className="itemtitle-home">{element.title}</p>
-                        <p className="itemname-home">
-                          {context.users.map((item) =>
-                            item.id === element.userId ? item.name : null
-                          )}
-                          : نویسنده
-                        </p>
-                      </div>
-                    </Link>
-                  );
-                })}
+              {context.filterposts.slice(0, context.more).map((element) => {
+                return (
+                  <Link to={`/${element.id}`} className="itemlink-home">
+                    <div className="item-home">
+                      <img
+                        src={context.photos[element.id - 1].thumbnailUrl}
+                        className="itemimg-home"
+                      />
+                      <p className="itemtitle-home">{element.title}</p>
+                      <p className="itemname-home">
+                        {context.users.map((item) =>
+                          item.id === element.userId ? item.name : null
+                        )}
+                        : نویسنده
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
             <button
               className="morebtn-home"
@@ -63,7 +63,7 @@ const Home = () => {
                 handlemore(refmorebtn.current);
               }}
               ref={refmorebtn}
-              style={{ display: context.isactive ? ('none') : ('block')}}
+              style={{ display: context.isactive ? "none" : "block" }}
             >
               بیشتر
             </button>

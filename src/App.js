@@ -8,6 +8,8 @@ import Navbar from "./components/navbar";
 import Singlepost from "./components/singlepost";
 import Register from "./components/register";
 import Login from "./components/login";
+import Makeblog from "./components/makeblog";
+import Yourblog from "./components/yourblog";
 
 const App = () => {
   const [posts, setposts] = useState([]);
@@ -17,6 +19,10 @@ const App = () => {
   const [more, setmore] = useState(15);
   const [isactive, setisactive] = useState(false);
   const [search, setsearch] = useState('');
+  const [status, setstatus] = useState(false)
+  const [usernameprofile, setusernameprofile] = useState("")
+  const [passwordprofile, setpasswordprofile] = useState("");
+  const [emailprofile, setemailprofile] = useState("");
 
   useEffect(() => {
     async function getapi() {
@@ -34,6 +40,17 @@ const App = () => {
       setfilterposts(postresponse.data);
       setusers(userresponse.data);
       setphotos(imgresponse.data);
+      
+      let username = sessionStorage.getItem("username");
+      if ((username !== "", username !== null)) {
+        let profileresponse = await axios.get(
+          "http://localhost:8000/users/" + username
+        );
+        setemailprofile(profileresponse.data.email);
+        setpasswordprofile(profileresponse.data.password);
+        setusernameprofile(profileresponse.data.id);
+        setstatus(true);
+      }
     }
     getapi();
   }, []);
@@ -53,15 +70,25 @@ const App = () => {
           photos: photos,
           onmore: handlemore,
           onchange: handlechange,
+          status: status,
+          setstatus: setstatus,
+          setemailprofile: setemailprofile,
+          emailprofile: emailprofile,
+          setpasswordprofile: setpasswordprofile,
+          passwordprofile: passwordprofile,
+          setusernameprofile: setusernameprofile,
+          usernameprofile: usernameprofile,
         }}
       >
         <Navbar />
         <Routes>
           <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="/:id" element={<Singlepost />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/makeblog" element={<Makeblog />} />
+          <Route path="/youtblog" element={<Yourblog />} />
           <Route path="*" element={<Navigate to="/not-found" replace />} />
         </Routes>
       </Context.Provider>

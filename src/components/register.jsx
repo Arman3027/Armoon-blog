@@ -1,9 +1,13 @@
 import "../style/style.css";
 import { Field, FormikProvider, useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { useState  } from "react";
+import { Link , useNavigate} from "react-router-dom";
 import * as Yup from "yup";
 
 const Register = () => {
+
+  const navigate = useNavigate()
+
   const formik = useFormik({
     initialValues: {
       username: "",
@@ -11,7 +15,21 @@ const Register = () => {
       password: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      let person = {
+        "id": values.username,
+        "email": values.email,
+        "password" : values.password
+      }
+      fetch("http://localhost:8000/users", {
+        method: 'POST',
+        headers:{ 'content-type': 'aplication/json' },
+        body: JSON.stringify(person)
+      }).then((res) => {
+        alert('ثبت نام با موفقیت انجام شد')
+        navigate('/login')
+      }).catch((err) => {
+        alert(err.massage)
+      })
     },
     validationSchema: Yup.object({
       username: Yup.string()

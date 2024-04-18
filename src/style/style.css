@@ -34,7 +34,6 @@ body {
 .beforlogin-nav {
   height: 100%;
   width: 170px;
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +41,6 @@ body {
 .afterlogin-nav {
   height: 100%;
   width: 320px;
-  display: none;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -54,6 +52,7 @@ body {
   font-size: 0.8em;
   text-decoration: none;
   color: #fff;
+  cursor: pointer;
 }
 .arm-nav {
   color: white;
@@ -300,20 +299,13 @@ body {
   border: 2px solid #ccc;
 }
 .submitbtn-single {
-  width: 85px;
-  height: 30px;
+  width: 100px;
+  height: 35px;
   border-radius: 4px;
   border: #ccc;
   background-color: #53118f;
   color: #fff;
-}
-.sendbtn-single {
-  width: 75px;
-  height: 30px;
-  border-radius: 4px;
-  border: #ccc;
-  background-color: #53118f;
-  color: #fff;
+  margin-bottom: 30px;
 }
 
 /* .....................................................................REGISTER ....... */
@@ -443,11 +435,11 @@ body {
   font-size: 0.7em;
 }
 .question-register{
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #242424;
 }
 .questionlink-register{
-  font-size: 1.2em;
+  font-size: 1em;
   color: #933dc9;
 }
 /* .....................................................................LOGIN ............*/
@@ -489,14 +481,14 @@ body {
   font-size: 0.8em;
   margin: 5px;
 }
-.emailpack-login{
+.usernamepack-login{
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-#email-login {
+#username-login {
   border-radius: 4px;
   border: none;
   outline: none;
@@ -538,7 +530,7 @@ body {
   color: #fff;
   font-size: 1.4em;
 }
-.emailerror-login{
+.usernameerror-login{
   background-color: #53118f;
   color: #fff;
   padding: 1px;
@@ -553,11 +545,11 @@ body {
   font-size: 0.7em;
 }
 .question-login{
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #242424;
 }
 .questionlink-login{
-  font-size: 1.2em;
+  font-size: 1em;
   color: #933dc9;
 }
 
@@ -639,7 +631,7 @@ body {
   }
   .submitbtn-single .sendbtn-single {
     height: 40px;
-    width: 100px;
+    width: 110px;
   }
 }
 

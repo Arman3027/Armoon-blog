@@ -1,21 +1,38 @@
 import "../style/style.css";
 import { Field, FormikProvider, useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { Context } from "../context/context";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const context = useContext(Context);
+
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      fetch("http://localhost:8000/users/" + values.username)
+        .then((res) => {
+          return res.json();
+        })
+        .then((resp) => {
+          if (resp.password === values.password) {
+            alert("ورود با موفقیت انجام شد");
+            navigate("/home");
+            sessionStorage.setItem("username", values.username);
+            window.location.reload()
+          } else alert("لطفا رمز عبور را تصحیح کنید");
+        })
+        .catch((err) => {
+          alert("نام کاربری صحیح نمی باشد");
+        });
     },
     validationSchema: Yup.object({
-      email: Yup.string()
-        .email("لطفا ایمیل خود را تصحیح نمایید")
-        .required("لطفا ایمیل خود را وارد نمایید"),
+      username: Yup.string().required("لطفا نام کاربری خود را وارد نمایید"),
       password: Yup.string()
         .min(8, "باید بیشتر از 8 کاراکتر باشد")
         .max(12, "باید کمتر از 20 کاراکتر باشد")
@@ -29,18 +46,20 @@ const Login = () => {
         <div className="flex-login">
           <form onSubmit={formik.handleSubmit} className="form-login">
             <span id="signin-login">ورود</span>
-            <div className="emailpack-login">
+            <div className="usernamepack-login">
               <label className="lable-login" htmlFor="email-login">
-                ایمیل
+                نام کاربری
               </label>
               <Field
-                type="email"
-                id="email-login"
-                {...formik.getFieldProps("email")}
-                placeholder="email"
+                type="username"
+                id="username-login"
+                {...formik.getFieldProps("username")}
+                placeholder="username"
               />
-              {formik.touched.email && formik.errors.email ? (
-                <div className="emailerror-login">{formik.errors.email}</div>
+              {formik.touched.username && formik.errors.username ? (
+                <div className="usernameerror-login">
+                  {formik.errors.username}
+                </div>
               ) : null}
             </div>
             <div className="passwordpack-login">
@@ -60,8 +79,10 @@ const Login = () => {
               ) : null}
             </div>
             <p className="question-login">
-                هنوز ثبت نام نکردی؟ 
-              <Link to={'/register'} className="questionlink-login"> ثبت نام </Link>
+              هنوز ثبت نام نکردی؟
+              <Link to={"/register"} className="questionlink-login">
+                ثبت نام
+              </Link>
             </p>
             <button type="submit" id="button-login">
               <span>ثبت</span>
