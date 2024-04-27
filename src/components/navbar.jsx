@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { NavLink , useNavigate} from "react-router-dom";
 import "../style/style.css";
 import { Context } from "../context/context";
 import { useContext } from "react";
 
 const Navbar = () => {
+  const navigate = useNavigate()
   let context = useContext(Context);
   return (
     <>
@@ -70,7 +71,7 @@ const Navbar = () => {
                 return { color: isActive ? "#e0e0e0" : "#fff" };
               }}
             >
-              <p className="item-nav">بلاگ های شما</p>
+              <p className="item-nav">بلاگهای شما</p>
             </NavLink>
             <p className="item-nav" onClick={handleout}>خروج</p>
           </div>
@@ -82,6 +83,7 @@ const Navbar = () => {
 
   function handleout() {
     sessionStorage.clear()
+    navigate('/')
     context.setstatus(false)
     context.setusernameprofile("");
     context.setemailprofile("")

@@ -74,7 +74,7 @@ const Singlepost = () => {
             return (
               <>
                 <div className="singlecomment-single">
-                  <div className="commentname-single">{element.name}</div>
+                  <div className="commentname-single">{element.id}</div>
                   <div className="commentemail-single">{element.email}</div>
                   <div className="commentbody-single">{element.body}</div>
                 </div>
@@ -111,7 +111,7 @@ const Singlepost = () => {
       value = value.replace(/(\r\n|\n|\r)/gm, "");
       let newcomment = {
         "postId": singlepost.id,
-        "name": context.usernameprofile,
+        "id": context.usernameprofile,
         "email": context.emailprofile,
         "body": value
       }

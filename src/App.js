@@ -10,6 +10,7 @@ import Register from "./components/register";
 import Login from "./components/login";
 import Makeblog from "./components/makeblog";
 import Yourblog from "./components/yourblog";
+import Singlemypost from "./components/singlemypost";
 
 const App = () => {
   const [posts, setposts] = useState([]);
@@ -18,11 +19,12 @@ const App = () => {
   const [photos, setphotos] = useState([]);
   const [more, setmore] = useState(15);
   const [isactive, setisactive] = useState(false);
-  const [search, setsearch] = useState('');
-  const [status, setstatus] = useState(false)
-  const [usernameprofile, setusernameprofile] = useState("")
+  const [search, setsearch] = useState("");
+  const [status, setstatus] = useState(false);
+  const [usernameprofile, setusernameprofile] = useState("");
   const [passwordprofile, setpasswordprofile] = useState("");
   const [emailprofile, setemailprofile] = useState("");
+  const [myposts, setmyposts] = useState([]);
 
   useEffect(() => {
     async function getapi() {
@@ -40,7 +42,7 @@ const App = () => {
       setfilterposts(postresponse.data);
       setusers(userresponse.data);
       setphotos(imgresponse.data);
-      
+
       let username = sessionStorage.getItem("username");
       if ((username !== "", username !== null)) {
         let profileresponse = await axios.get(
@@ -50,11 +52,16 @@ const App = () => {
         setpasswordprofile(profileresponse.data.password);
         setusernameprofile(profileresponse.data.id);
         setstatus(true);
+
+        let responsemypost = await axios.get("http://localhost:8000/myPosts");
+        let filtermyposts = responsemypost.data.filter(
+          (item) => item.name === username
+        );
+        setmyposts(filtermyposts);
       }
     }
     getapi();
   }, []);
-
 
   return (
     <>
@@ -78,6 +85,7 @@ const App = () => {
           passwordprofile: passwordprofile,
           setusernameprofile: setusernameprofile,
           usernameprofile: usernameprofile,
+          myposts: myposts,
         }}
       >
         <Navbar />
@@ -88,7 +96,8 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/makeblog" element={<Makeblog />} />
-          <Route path="/youtblog" element={<Yourblog />} />
+          <Route path="/yourblog" element={<Yourblog />} />
+          <Route path="/yourblog/:mypostid" element={<Singlemypost />} />
           <Route path="*" element={<Navigate to="/not-found" replace />} />
         </Routes>
       </Context.Provider>
@@ -99,12 +108,12 @@ const App = () => {
 
   function handlemore(refmorebtn) {
     setmore();
-    refmorebtn.style.display = 'none'
-    setisactive(true)
+    refmorebtn.style.display = "none";
+    setisactive(true);
   }
 
   function handlechange(value, refmorebtn) {
-    setsearch(value)
+    setsearch(value);
     setmore();
     refmorebtn.style.display = "none";
     setisactive(true);
