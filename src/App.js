@@ -11,6 +11,8 @@ import Login from "./components/login";
 import Makeblog from "./components/makeblog";
 import Yourblog from "./components/yourblog";
 import Singlemypost from "./components/singlemypost";
+import Not_found from "./components/not found";
+import Protect from "./components/protect";
 
 const App = () => {
   const [posts, setposts] = useState([]);
@@ -92,12 +94,16 @@ const App = () => {
         <Routes>
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/" element={<Home />} />
-          <Route path="/:id" element={<Singlepost />} />
+          <Route path="/singlepost/:id" element={<Singlepost />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/makeblog" element={<Makeblog />} />
+          <Route element={<Protect />}>
+            <Route path="/makeblog" element={<Makeblog />} />
+            <Route path="/yourblog" element={<Yourblog />} />
+          </Route>
           <Route path="/yourblog" element={<Yourblog />} />
           <Route path="/yourblog/:mypostid" element={<Singlemypost />} />
+          <Route path="not-found" element={<Not_found />} />
           <Route path="*" element={<Navigate to="/not-found" replace />} />
         </Routes>
       </Context.Provider>

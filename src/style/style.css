@@ -768,7 +768,22 @@ body {
   word-wrap: break-word;
   direction: ltr;
 }
+/* .................................................................... NOT-FOUND........ */
 
+.container-notfound{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 60px 2px;
+}
+
+.notfound{
+  font-size: 2.5em;
+  color: red;
+}
 
 
 
@@ -891,6 +906,9 @@ body {
   .image-singlemy{
     width: 90%;
   }
+  .notfound{
+    font-size: 2em;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -982,6 +1000,9 @@ body {
   .container-singlemy{
     top: 60px;
   }
+  .notfound{
+    font-size: 1.7em;
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -1025,5 +1046,8 @@ body {
   }
   .main-singlemy{
     width: 95%;
+  }
+  .notfound{
+    font-size: 1.4em;
   }
 }

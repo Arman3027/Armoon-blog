@@ -39,7 +39,7 @@ const Home = () => {
             <div className="grid-home">
               {context.filterposts.slice(0, context.more).map((element) => {
                 return (
-                  <Link to={`/${element.id}`} className="itemlink-home">
+                  <Link to={`/singlepost/${element.id}`} className="itemlink-home">
                     <div className="item-home">
                       <img
                         src={context.photos[element.id - 1].thumbnailUrl}
