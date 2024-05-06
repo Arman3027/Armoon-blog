@@ -2,6 +2,10 @@ import { NavLink , useNavigate} from "react-router-dom";
 import "../style/style.css";
 import { Context } from "../context/context";
 import { useContext } from "react";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Navbar = () => {
   const navigate = useNavigate()
@@ -16,28 +20,25 @@ const Navbar = () => {
           >
             <NavLink
               to={"/"}
-              className="link-nav"
-              style={({ isActive }) => {
-                return { color: isActive ? "#e0e0e0" : "#fff" };
-              }}
+              className={({ isActive }) =>
+                isActive ? "active-link-nav" : "link-nav"
+              }
             >
               <p className="item-nav">خانه</p>
             </NavLink>
             <NavLink
               to={"/login"}
-              className="link-nav"
-              style={({ isActive }) => {
-                return { color: isActive ? "#e0e0e0" : "#fff" };
-              }}
+              className={({ isActive }) =>
+                isActive ? "active-link-nav" : "link-nav"
+              }
             >
               <p className="item-nav">ورود</p>
             </NavLink>
             <NavLink
               to={"/register"}
-              className="link-nav"
-              style={({ isActive }) => {
-                return { color: isActive ? "#e0e0e0" : "#fff" };
-              }}
+              className={({ isActive }) =>
+                isActive ? "active-link-nav" : "link-nav"
+              }
             >
               <p className="item-nav">ثبت نام</p>
             </NavLink>
@@ -48,32 +49,31 @@ const Navbar = () => {
           >
             <NavLink
               to={"/"}
-              className="link-nav"
-              style={({ isActive }) => {
-                return { color: isActive ? "#e0e0e0" : "#fff" };
-              }}
+              className={({ isActive }) =>
+                isActive ? "active-link-nav" : "link-nav"
+              }
             >
               <p className="item-nav">خانه</p>
             </NavLink>
             <NavLink
               to={"/makeblog"}
-              className="link-nav"
-              style={({ isActive }) => {
-                return { color: isActive ? "#e0e0e0" : "#fff" };
-              }}
+              className={({ isActive }) =>
+                isActive ? "active-link-nav" : "link-nav"
+              }
             >
               <p className="item-nav">ایجاد بلاگ</p>
             </NavLink>
             <NavLink
               to={"/yourblog"}
-              className="link-nav"
-              style={({ isActive }) => {
-                return { color: isActive ? "#e0e0e0" : "#fff" };
-              }}
+              className={({ isActive }) =>
+                isActive ? "active-link-nav" : "link-nav"
+              }
             >
               <p className="item-nav">بلاگهای شما</p>
             </NavLink>
-            <p className="item-nav" onClick={handleout}>خروج</p>
+            <p className="item-nav" onClick={handlequestion}>
+              خروج
+            </p>
           </div>
           <p className="arm-nav">Armoon-blog</p>
         </div>
@@ -81,7 +81,46 @@ const Navbar = () => {
     </>
   );
 
+  
+  function handlequestion() {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="custom-ui">
+            <p className="are-you-sure" style={{fontSize:'0.9em'}}>می خواهید از حساب کاربری خود خارج شوید؟</p>
+            <div className="pack-btn-question">
+              <button className="no-btn-question" onClick={onClose}>
+                نه
+              </button>
+              <button
+                onClick={() => {
+                  handleout();
+                  onClose();
+                }}
+                className="yes-btn-question"
+              >
+                آره , خارج شو
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
+  }
+
   function handleout() {
+     toast.info("لطفا کمی صبر کنید", {
+       position: "top-right",
+       autoClose: 2000,
+       hideProgressBar: false,
+       closeOnClick: true,
+       pauseOnHover: true,
+       draggable: true,
+       progress: undefined,
+       theme: "colored",
+       transition: Bounce,
+     });
+     const settimeout = setTimeout(() => {
     sessionStorage.clear()
     navigate('/')
     context.setstatus(false)
@@ -89,6 +128,7 @@ const Navbar = () => {
     context.setemailprofile("")
     context.setpasswordprofile('')
     window.location.reload()
+     }, 2000);
   }
 };
 

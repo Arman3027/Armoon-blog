@@ -42,7 +42,7 @@ const Home = () => {
                   <Link to={`/singlepost/${element.id}`} className="itemlink-home">
                     <div className="item-home">
                       <img
-                        src={context.photos[element.id - 1].thumbnailUrl}
+                        src={context.photos[element.id - 1].url}
                         className="itemimg-home"
                       />
                       <p className="itemtitle-home">{element.title}</p>

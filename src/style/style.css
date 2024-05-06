@@ -48,9 +48,12 @@ body {
 .link-nav {
   text-decoration: none;
 }
+.active-link-nav{
+  text-decoration: underline;
+  color: #fff;
+}
 .item-nav {
   font-size: 0.8em;
-  text-decoration: none;
   color: #fff;
   cursor: pointer;
 }
@@ -119,6 +122,13 @@ body {
   font-size: 1.5em;
   font-family: "Lalezar";
   margin: 0 20px;
+  transition: ease 0.2s;
+  cursor: pointer;
+}
+.adbtn-home:active {
+  background-color: #fff;
+  color: #53118f;
+  border: 3px solid #53118f;
 }
 .ad-home {
   font-size: 2em;
@@ -206,6 +216,10 @@ body {
   color: #fff;
   margin: 30px;
   font-family: "lalezar", cursive;
+  transition: ease-out 0.2s;
+}
+.morebtn-home:hover {
+  border-radius: 20px;
 }
 
 /* ....................................................................SINGLEPOST  */
@@ -236,13 +250,13 @@ body {
   align-items: flex-start;
 }
 .img-single {
-  width: 100%;
+  width: 80%;
   margin: 10px 0px 20px 0px;
   border-radius: 5px;
+  margin: 0 auto;
 }
 .title-single {
-  font-family: "poppins";
-  margin: 10px 0;
+  margin: 20px 0 10px;
 }
 .name-single {
   margin: 10px 0;
@@ -408,6 +422,7 @@ body {
   border: none;
   outline: none;
   margin: 0 auto;
+  box-shadow: 1px 0px 3px #525252;
 }
 #button-register span {
   color: #fff;
@@ -524,6 +539,7 @@ body {
   border: none;
   outline: none;
   margin: 0 auto;
+  box-shadow: 1px 0px 3px #525252;
 }
 #button-login span {
   color: #fff;
@@ -588,14 +604,14 @@ body {
   align-items: flex-start;
   padding: 5px;
 }
-.labelselect-make{
+.labelselect-make {
   font-size: 0.7em;
 }
-.select-make{
+.select-make {
   width: 100px;
   height: 20px;
 }
-.option-make{
+.option-make {
   width: 100%;
   height: 100%;
 }
@@ -649,7 +665,7 @@ body {
 }
 /* ..................................................................... YOUR BLOG...... */
 
-.container-your{
+.container-your {
   width: 100%;
   height: 100%;
   position: relative;
@@ -658,13 +674,13 @@ body {
   justify-content: center;
   align-items: center;
 }
-.flex-your{
+.flex-your {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
-.profile-your{
+.profile-your {
   width: 100vw;
   height: 200px;
   direction: ltr;
@@ -674,57 +690,72 @@ body {
   align-items: center;
   background-color: #933dc9;
 }
-.name-your{
+.name-your {
   font-size: 1.8em;
   color: #fff;
-  margin:  0 0 10px 0;
+  margin: 0 0 10px 0;
 }
-.email-your{
+.email-your {
   font-size: 1em;
   color: #fff;
 }
-.content-your{
+.content-your {
   width: 100%;
   height: 100%;
-  display:grid;
-  grid-template-columns: repeat(4 , 1fr);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   padding: 50px 100px;
 }
-.itemlink-your{
+.contentempty-your {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 5px;
+}
+.itemlink-your {
   text-decoration: none;
 }
-.item-your{
+.item-your {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 40px 10px;
 }
-.itemimg-your{
+.itemimg-your {
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  box-shadow: 0.1px 0px 10px #525252 ;
+  box-shadow: 0.1px 0px 10px #525252;
 }
-.itemtitle-your{
-  color: black ;
-  margin: 4px 0 ;
+.itemtitle-your {
+  color: black;
+  margin: 10px 0;
+}
+.empty-your {
+  font-size: 1.7em;
+}
+.linkempty-your{
+  color: #53118f;
 }
 
 /* .................................................................... SINGLEMYPOST .... */
 
-.container-singlemy{
+.container-singlemy {
   width: 100%;
   height: 100%;
   position: relative;
   top: 50px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 10px 0px;
 }
 
-.main-singlemy{
+.main-singlemy {
   width: 60%;
   height: 100%;
   display: flex;
@@ -735,13 +766,13 @@ body {
   border-radius: 5px;
   padding: 10px;
 }
-.image-singlemy{
+.image-singlemy {
   border-radius: 5px;
   margin: 10px;
   width: 80%;
   height: auto;
 }
-.title-singlemy{
+.title-singlemy {
   font-size: 1.2em;
   margin: 12px;
   width: 100%;
@@ -751,7 +782,7 @@ body {
   align-items: center;
   word-wrap: break-word;
 }
-.name-singlemy{
+.name-singlemy {
   font-size: 1em;
   margin: 12px;
   width: 100%;
@@ -761,16 +792,35 @@ body {
   align-items: center;
   word-wrap: break-word;
 }
-.body-singlemy{
+.body-singlemy {
   font-size: 0.9em;
   margin: 12px;
   width: 100%;
   word-wrap: break-word;
   direction: ltr;
 }
+.dltbtn-singlemy{
+  width: 90px;
+  height: 35px;
+  outline: none;
+  border: none;
+  background-color: #53118f;
+  border-radius: 5px;
+  margin: 15px 0;
+  box-shadow: 1px 0 8px black;
+  cursor: pointer;
+  color: #fff;
+  font-family: 'Lalezar';
+  font-size: 1em;
+}
+.dltbtn-singlemy:active{
+  box-shadow: 1px 0 5px #525252;
+}
+
+
 /* .................................................................... NOT-FOUND........ */
 
-.container-notfound{
+.container-notfound {
   width: 100%;
   height: 100%;
   display: flex;
@@ -780,13 +830,65 @@ body {
   padding: 60px 2px;
 }
 
-.notfound{
+.notfound {
   font-size: 2.5em;
   color: red;
 }
 
+/* ..................................................................... custom ui question... */
 
-
+.custom-ui{
+  width: 340px;
+  height: 130px;
+  border-radius: 5px;
+  background-color: #933dc9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.are-you-sure{
+  font-size: 1.2em;
+  color: #fff;
+  font-family: 'Lalezar';
+}
+.pack-btn-question{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.no-btn-question{
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  outline: none;
+  color: #fff;
+  background-color: #00000000;
+  font-size: 0.7em;
+  font-family: 'Lalezar';
+  transition: all 0.3s ease;
+}
+.no-btn-question:hover{
+  background-color: #ffffff88;
+}
+.yes-btn-question{
+  width: 100px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  outline: none;
+  color: #fff;
+  background-color: #00000000;
+  font-size: 0.7em;
+  font-family: 'Lalezar';
+  transition: all 0.3s ease;
+}
+.yes-btn-question:hover{
+  background-color: #ffffff88;
+}
 /* .....................................................................responsive....... */
 
 @media screen and (max-width: 1000px) {
@@ -799,6 +901,14 @@ body {
     align-items: center;
   }
   .link-nav {
+    display: block;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .active-link-nav{
     display: block;
     height: 100%;
     width: 100%;
@@ -829,11 +939,11 @@ body {
   .textarea-single {
     width: 40%;
   }
-  .content-your{
-    grid-template-columns: repeat(3,1fr);
+  .content-your {
+    grid-template-columns: repeat(3, 1fr);
     padding: 50px 50px;
   }
-  .main-singlemy{
+  .main-singlemy {
     width: 70%;
   }
 }
@@ -862,6 +972,9 @@ body {
   .main-single {
     width: 85%;
   }
+  .img-single {
+    width: 90%;
+  }
   .comments-single {
     width: 80%;
   }
@@ -873,13 +986,17 @@ body {
     height: 40px;
     width: 110px;
   }
-  .content-your{
-    grid-template-columns: repeat(2,1fr);
+  .content-your {
+    grid-template-columns: repeat(2, 1fr);
     padding: 25px 25px;
   }
-  .main-singlemy{
+  .main-singlemy {
     width: 80%;
   }
+.dltbtn-singlemy{
+  width: 80px;
+  height: 30px;
+}
 }
 
 @media screen and (max-width: 550px) {
@@ -900,15 +1017,22 @@ body {
   .ad-home {
     margin: 10px 20px 0 0;
   }
-  .main-singlemy{
+  .img-single {
+    width: 95%;
+  }
+  .main-singlemy {
     width: 90%;
   }
-  .image-singlemy{
+  .image-singlemy {
     width: 90%;
   }
-  .notfound{
+  .notfound {
     font-size: 2em;
   }
+.dltbtn-singlemy{
+  width: 75px;
+  height: 25px;
+}
 }
 
 @media screen and (max-width: 500px) {
@@ -922,6 +1046,7 @@ body {
     top: 60px;
   }
   .main-home {
+    height: 55vh;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -994,19 +1119,26 @@ body {
   .main-make {
     width: 90%;
   }
-  .container-your{
+  .container-your {
     top: 60px;
   }
-  .container-singlemy{
+  .container-singlemy {
     top: 60px;
   }
-  .notfound{
+  .notfound {
     font-size: 1.7em;
   }
+  .empty-your {
+    font-size: 1.5em;
+  }
+  .custom-ui{
+  width: 280px;
+  height: 130px;
+}
 }
 
 @media screen and (max-width: 400px) {
-  .item-nav{
+  .item-nav {
     font-size: 0.7em;
   }
   .flex-nav {
@@ -1040,14 +1172,25 @@ body {
     height: 60px;
     width: 140px;
   }
-  .content-your{
-    grid-template-columns: repeat(1,1fr);
+  .content-your {
+    grid-template-columns: repeat(1, 1fr);
     padding: 25px 25px;
   }
-  .main-singlemy{
+  .main-singlemy {
     width: 95%;
   }
-  .notfound{
+  .notfound {
     font-size: 1.4em;
   }
+  .empty-your {
+    font-size: 1.2em;
+  }
+.dltbtn-singlemy{
+  width: 70px;
+  height: 23px;
+}
+  .custom-ui{
+  width: 250px;
+  height: 130px;
+}
 }

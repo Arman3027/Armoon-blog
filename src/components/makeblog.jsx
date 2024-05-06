@@ -2,6 +2,10 @@ import { useContext, useState, useRef, useEffect } from "react";
 import { Context } from "../context/context";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Makeblog = () => {
   const [image, setimage] = useState(null);
@@ -73,7 +77,7 @@ const Makeblog = () => {
             <button
               className="submitmake-make"
               onClick={() => {
-                handlesubmit(titleinputref.current, bodyinputref.current);
+                handlequestion(titleinputref.current, bodyinputref.current);
               }}
             >
               ارسال پست
@@ -88,6 +92,33 @@ const Makeblog = () => {
     if (value) {
       setimage(value);
     }
+  }
+
+
+  function handlequestion(titleref,bodyref) {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="custom-ui">
+            <p className="are-you-sure">آیا از این کار مطمئنی؟</p>
+            <div className="pack-btn-question">
+              <button className="no-btn-question" onClick={onClose}>
+                نه
+              </button>
+              <button
+                onClick={() => {
+                  handlesubmit(titleref , bodyref);
+                  onClose();
+                }}
+                className="yes-btn-question"
+              >
+                آره 
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
   }
 
   function handlesubmit(titleinputref, bodyinputref) {
@@ -109,15 +140,37 @@ const Makeblog = () => {
         body: JSON.stringify(person),
       })
         .then(() => {
-          alert("با موفقیت انجام شد");
+        toast.success("با موفقیت انجام شد", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+         const settimeout =  setTimeout(() => {
           navigate("/");
-          window.location.reload()
+           window.location.reload();
+         }, 3000)
         })
         .catch((err) => {
           alert(err.massage);
         });
     } else {
-      alert("لطفا موارد خواسته شده را پر کنید");
+        toast.warning("موارد خواسته شده را پر کنید", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
     }
   }
 };

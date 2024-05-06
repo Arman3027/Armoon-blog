@@ -13,6 +13,8 @@ import Yourblog from "./components/yourblog";
 import Singlemypost from "./components/singlemypost";
 import Not_found from "./components/not found";
 import Protect from "./components/protect";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   const [posts, setposts] = useState([]);
@@ -91,6 +93,19 @@ const App = () => {
         }}
       >
         <Navbar />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Bounce}
+        />
         <Routes>
           <Route path="/home" element={<Navigate to="/" replace />} />
           <Route path="/" element={<Home />} />

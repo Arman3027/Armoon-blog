@@ -3,6 +3,8 @@ import { Field, FormikProvider, useFormik } from "formik";
 import { useState  } from "react";
 import { Link , useNavigate} from "react-router-dom";
 import * as Yup from "yup";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
 
@@ -25,10 +27,30 @@ const Register = () => {
         headers:{ 'content-type': 'aplication/json' },
         body: JSON.stringify(person)
       }).then((res) => {
-        alert('ثبت نام با موفقیت انجام شد')
+        toast.success("با موفقیت انجام شد", {
+          position: "top-right",
+          autoClose: 4000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
         navigate('/login')
       }).catch((err) => {
-        alert(err.massage)
+        toast.error(err.massage, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
       })
     },
     validationSchema: Yup.object({
@@ -99,7 +121,7 @@ const Register = () => {
               ) : null}
             </div>
             <p className="question-register">
-              قبلا ثبت نام کردی ؟ <Link to={'/login'} className="questionlink-register">ورود</Link>
+              قبلا ثبت نام کردی؟ <Link to={'/login'} className="questionlink-register">ورود</Link>
             </p>
             <button type="submit" id="button-register">
               <span>ثبت</span>

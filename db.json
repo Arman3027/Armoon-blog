@@ -4,6 +4,16 @@
       "id": "Arman3027",
       "email": "solaa8239@gmail.com",
       "password": "A3r0m2a7n"
+    },
+    {
+      "id": "Alpha1000",
+      "email": "Alpha@gmail.com",
+      "password": "Alpha1000"
+    },
+    {
+      "id": "Arzo",
+      "email": "Arzo@gmail.com",
+      "password": "Arzooooo"
     }
   ],
   "comments": [
@@ -12,85 +22,34 @@
       "postId": 1,
       "email": "solaa8239@gmail.com",
       "body": "good blog"
+    },
+    {
+      "id": "Arman3027",
+      "postId": 2,
+      "email": "solaa8239@gmail.com",
+      "body": "عالی بود"
+    },
+    {
+      "id": "Arzo",
+      "postId": 1,
+      "email": "Arzo@gmail.com",
+      "body": "عالی بود"
     }
   ],
   "myPosts": [
     {
-      "id": "afb8",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/61a65",
+      "id": "1968",
+      "name": "Alpha1000",
+      "image": "https://via.placeholder.com/600/771796",
+      "title": "2",
+      "body": "2"
+    },
+    {
+      "id": "444b",
+      "name": "Alpha1000",
+      "image": "https://via.placeholder.com/600/9c184f",
       "title": "s",
       "body": "s"
-    },
-    {
-      "id": "8dda",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/197d29",
-      "title": "abcd",
-      "body": "ABCD"
-    },
-    {
-      "id": "c19c",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/ea51da",
-      "title": "test",
-      "body": "teast"
-    },
-    {
-      "id": "baf5",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/324309",
-      "title": "resttt",
-      "body": "trsd"
-    },
-    {
-      "id": "c38a",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/771796",
-      "title": "terdvgh",
-      "body": "agsd"
-    },
-    {
-      "id": "1f2b",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/24f355",
-      "title": "green",
-      "body": "green"
-    },
-    {
-      "id": "9150",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/fdf73e",
-      "title": "ddettty",
-      "body": "yyyyy"
-    },
-    {
-      "id": "f841",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/61a65",
-      "title": "white",
-      "body": "life is white"
-    },
-    {
-      "id": "dabc",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/61a65",
-      "title": "w",
-      "body": "ww"
-    },
-    {
-      "id": "2ffe",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/21d35",
-      "title": "teset",
-      "body": "test"
-    },
-    {
-      "id": "33ab",
-      "name": "Arman3027",
-      "image": "https://via.placeholder.com/600/9de06d",
-      "title": "this world is beutiful",
-      "body": "we are in my our lifes do somethings so bad and we dont like to another knew it dddddddddddddddddddddddddddkkkkkkkkkkkkkkknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnooooooooooooooooooooooooooooooooooo[[[[[[[[[[[[[[[[[[[[[[[[[[ccccccccccccccccccccccccccc"
     }
   ]
 }

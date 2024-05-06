@@ -4,6 +4,8 @@ import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Context } from "../context/context";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,14 +23,49 @@ const Login = () => {
         })
         .then((resp) => {
           if (resp.password === values.password) {
-            alert("ورود با موفقیت انجام شد");
+            toast.success("با موفقیت وارد شدید", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              transition: Bounce,
+            })
+
+            const settimeout = setTimeout(() => {
             navigate("/home");
             sessionStorage.setItem("username", values.username);
-            window.location.reload()
-          } else alert("لطفا رمز عبور را تصحیح کنید");
+            window.location.reload();
+            }, 3000)
+            
+          } else {
+            toast.error("لطفا رمز عبور خود را تصحیح کنید", {
+              position: "top-right",
+              autoClose: 4000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              transition: Bounce,
+            });};
         })
         .catch((err) => {
-          alert("نام کاربری صحیح نمی باشد");
+            toast.error("نام کاربری صحیح نمی باشد", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "colored",
+              transition: Bounce,
+            });
         });
     },
     validationSchema: Yup.object({
@@ -79,7 +116,7 @@ const Login = () => {
               ) : null}
             </div>
             <p className="question-login">
-              هنوز ثبت نام نکردی؟
+              هنوز ثبت نام نکردی؟ &nbsp;
               <Link to={"/register"} className="questionlink-login">
                 ثبت نام
               </Link>
