@@ -9,11 +9,6 @@
       "id": "Alpha1000",
       "email": "Alpha@gmail.com",
       "password": "Alpha1000"
-    },
-    {
-      "id": "Arzo",
-      "email": "Arzo@gmail.com",
-      "password": "Arzooooo"
     }
   ],
   "comments": [
@@ -27,12 +22,6 @@
       "id": "Arman3027",
       "postId": 2,
       "email": "solaa8239@gmail.com",
-      "body": "عالی بود"
-    },
-    {
-      "id": "Arzo",
-      "postId": 1,
-      "email": "Arzo@gmail.com",
       "body": "عالی بود"
     }
   ],
@@ -50,6 +39,13 @@
       "image": "https://via.placeholder.com/600/9c184f",
       "title": "s",
       "body": "s"
+    },
+    {
+      "id": "be0c",
+      "name": "Alpha1000",
+      "image": "https://via.placeholder.com/600/b4412f",
+      "title": "test",
+      "body": " tesssssssssssssssssssssssssssssssst"
     }
   ]
 }
