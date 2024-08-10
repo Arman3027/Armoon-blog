@@ -21,6 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "mockserver": "json-server --watch db.json --port 8000",
+    "startdev": "concurrently --kill-others \"npm start\" \"npm run mockserver\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -44,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "html-webpack-plugin": "^5.6.0",
     "json-server": "^1.0.0-alpha.23",
     "json-server-auth": "^2.1.0"
