@@ -14,7 +14,7 @@
     "react-dom": "^18.2.0",
     "react-notifications": "^1.7.4",
     "react-router-dom": "^6.22.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "react-toastify": "^10.0.5",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
@@ -23,7 +23,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "mockserver": "json-server --watch db.json --port 8000",
+    "dev": "concurrently --kill-others \"npm run start\" \"npm run mockserver\""
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "concurrently": "^8.2.2",
     "html-webpack-plugin": "^5.6.0",
     "json-server": "^1.0.0-alpha.23",
     "json-server-auth": "^2.1.0"
