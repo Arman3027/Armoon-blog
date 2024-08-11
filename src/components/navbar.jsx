@@ -121,7 +121,7 @@ const Navbar = () => {
        transition: Bounce,
      });
      const settimeout = setTimeout(() => {
-    localStorage.clear()
+    sessionStorage.clear()
     navigate('/')
     context.setstatus(false)
     context.setusernameprofile("");

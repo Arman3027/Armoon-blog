@@ -37,7 +37,7 @@ const Login = () => {
 
             const settimeout = setTimeout(() => {
             navigate("/home");
-            localStorage.setItem("username", values.username);
+            sessionStorage.setItem("username", values.username);
             window.location.reload();
             }, 3000)
             
