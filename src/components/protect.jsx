@@ -3,7 +3,7 @@ import Makeblog from "./makeblog";
 
 const Protect = () => {
     const navigate = useNavigate()
-    const token = sessionStorage.getItem('username')
+    const token = localStorage.getItem('username')
     return (token ? (<Outlet />) : (navigate('/login')));
 }
  

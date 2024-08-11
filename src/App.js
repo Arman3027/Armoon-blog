@@ -47,7 +47,7 @@ const App = () => {
       setusers(userresponse.data);
       setphotos(imgresponse.data);
 
-      let username = sessionStorage.getItem("username");
+      let username = localStorage.getItem("username");
       if ((username !== "", username !== null)) {
         let profileresponse = await axios.get(
           "http://localhost:8000/users/" + username
