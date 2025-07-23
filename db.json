@@ -1,11 +1,6 @@
 {
   "users": [
     {
-      "id": "Arman3027",
-      "email": "solaa8239@gmail.com",
-      "password": "A3r0m2a7n"
-    },
-    {
       "id": "Alpha1000",
       "email": "Alpha@gmail.com",
       "password": "Alpha1000"
@@ -45,7 +40,7 @@
       "name": "Alpha1000",
       "image": "https://via.placeholder.com/600/b4412f",
       "title": "test",
-      "body": " tesssssssssssssssssssssssssssssssst"
+      "body": " test"
     }
   ]
 }
